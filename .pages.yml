@@ -1,0 +1,74 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: blog
+    label: Blog
+    type: collection
+    path: src/content/blog
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      fields: [title, publishDate, draft]
+      primary: title
+    fields:
+      - name: title
+        label: Tytuł
+        type: string
+        required: true
+
+      - name: publishDate
+        label: Data publikacji
+        type: date
+        required: true
+
+      - name: description
+        label: Opis
+        type: text
+        required: true
+
+      - name: tags
+        label: Tagi
+        type: string
+        list: true
+
+      - name: draft
+        label: Szkic
+        type: boolean
+        default: false
+
+      - name: body
+        label: Treść artykułu
+        type: rich-text
+
+  - name: homepage
+    label: Strona główna – Tajemnica Światła
+    type: file
+    path: src/data/homepage.json
+    format: json
+    fields:
+      - name: title
+        label: Tytuł
+        type: string
+        required: true
+
+      - name: subtitle
+        label: Podtytuł
+        type: string
+
+      - name: description
+        label: Opis e-booka
+        type: text
+
+      - name: cover
+        label: Okładka e-booka
+        type: image
+
+      - name: buttonText
+        label: Tekst przycisku
+        type: string
+
+      - name: buttonUrl
+        label: Link do zakupu
+        type: string
